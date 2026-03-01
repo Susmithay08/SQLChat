@@ -6,7 +6,7 @@
 
 ## Quick Start
 
-Live Demo: [](#)
+Live Demo: [https://sqlchat-1.onrender.com](#)
 
 ---
 
