@@ -1,0 +1,152 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Backgrounds - very soft, almost white */
+  --bg:       #F7F5FF;
+  --bg2:      #FFFFFF;
+  --bg3:      #F0EEF9;
+  --bg4:      #E8E5F5;
+
+  /* Borders */
+  --border:   #E2DEEF;
+  --border2:  #D0CAED;
+
+  /* Pastel accents */
+  --lavender:      #7C6FCD;
+  --lavender2:     #6558C0;
+  --lavender-soft: rgba(124,111,205,0.1);
+  --lavender-glow: rgba(124,111,205,0.15);
+
+  --mint:          #4DBFA0;
+  --mint-soft:     rgba(77,191,160,0.1);
+
+  --peach:         #F4956A;
+  --peach-soft:    rgba(244,149,106,0.1);
+
+  --rose:          #E87C8A;
+  --rose-soft:     rgba(232,124,138,0.1);
+
+  --sky:           #64B5F6;
+  --sky-soft:      rgba(100,181,246,0.1);
+
+  --yellow:        #FFD166;
+  --yellow-soft:   rgba(255,209,102,0.15);
+
+  /* Text */
+  --text:     #2D2654;
+  --text2:    #6B6494;
+  --text3:    #9B96BE;
+  --text4:    #C4C0DB;
+
+  /* SQL syntax colors */
+  --sql-keyword:  #7C6FCD;
+  --sql-string:   #4DBFA0;
+  --sql-number:   #F4956A;
+  --sql-comment:  #9B96BE;
+
+  --font: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --shadow-sm: 0 2px 8px rgba(124,111,205,0.08);
+  --shadow:    0 4px 20px rgba(124,111,205,0.12);
+  --shadow-lg: 0 8px 40px rgba(124,111,205,0.16);
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+button { cursor: pointer; font-family: var(--font); border: none; outline: none; background: none; color: inherit; }
+input, select, textarea { font-family: var(--font); outline: none; color: var(--text); }
+a { color: var(--lavender); text-decoration: none; }
+
+/* Animations */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+@keyframes spin     { to{transform:rotate(360deg)} }
+@keyframes shimmer  { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+/* Cards */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 13px;
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input:focus { border-color: var(--lavender); box-shadow: 0 0 0 3px var(--lavender-soft); outline: none; }
+.input::placeholder { color: var(--text4); }
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--lavender), var(--lavender2));
+  color: #fff;
+  padding: 9px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s;
+  box-shadow: 0 2px 12px var(--lavender-glow);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--lavender-glow); }
+.btn-primary:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text2);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.btn-ghost:hover { border-color: var(--lavender); color: var(--lavender); background: var(--lavender-soft); }
+
+/* SQL highlighting helpers */
+.sql-block {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  white-space: pre;
+  color: var(--text);
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--bg4) 50%, var(--bg3) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 6px;
+}
+
+/* Success / error states */
+.badge-success { background: var(--mint-soft); color: var(--mint); border: 1px solid rgba(77,191,160,0.25); }
+.badge-error   { background: var(--rose-soft); color: var(--rose); border: 1px solid rgba(232,124,138,0.25); }
+.badge-info    { background: var(--lavender-soft); color: var(--lavender); border: 1px solid rgba(124,111,205,0.25); }
