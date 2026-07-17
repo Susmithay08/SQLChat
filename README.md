@@ -6,7 +6,7 @@
 
 ## Quick Start
 
-Live Demo: [https://sqlchat-1.onrender.com](#)
+Live Demo: https://sqlchat-erb2.onrender.com
 
 ---
 
